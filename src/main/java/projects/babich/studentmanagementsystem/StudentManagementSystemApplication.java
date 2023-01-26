@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import projects.babich.studentmanagementsystem.repository.StudentRepository;
+import projects.babich.studentmanagementsystem.repository.TeacherRepository;
 
 @SpringBootApplication
 public class StudentManagementSystemApplication implements CommandLineRunner {
@@ -15,6 +16,9 @@ public class StudentManagementSystemApplication implements CommandLineRunner {
 
 	@Autowired
 	private StudentRepository studentRepository;
+
+	@Autowired
+	private TeacherRepository teacherRepository;
 
 	@Override
 	public void run(String... args) {

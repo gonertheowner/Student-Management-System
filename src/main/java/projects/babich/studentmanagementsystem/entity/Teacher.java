@@ -3,6 +3,7 @@ package projects.babich.studentmanagementsystem.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "sms_teacher")
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
