@@ -11,22 +11,23 @@ import projects.babich.studentmanagementsystem.service.StudentService;
 
 @Controller
 public class StudentController {
-    private StudentService studentService;
+    private final StudentService studentService;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
+
     @GetMapping("/students")
     public String listStudents(Model model) {
         model.addAttribute("students", studentService.getAllStudents());
-        return "students";
+        return "student/students";
     }
 
     @GetMapping("/students/new")
     public String createStudentForm(Model model) {
         Student student = new Student();
         model.addAttribute("student", student);
-        return "create_student";
+        return "student/create_student";
     }
 
     @PostMapping("/students")
@@ -38,7 +39,7 @@ public class StudentController {
     @GetMapping("/students/edit/{id}")
     public String editStudentForm(@PathVariable Long id, Model model) {
         model.addAttribute("student", studentService.getStudentById(id));
-        return "edit_student";
+        return "student/edit_student";
     }
 
     @PostMapping("/students/{id}")
@@ -54,7 +55,7 @@ public class StudentController {
         return "redirect:/students";
     }
 
-    @GetMapping("/students/{id}")
+    @GetMapping("/students/delete/{id}")
     public String deleteStudent(@PathVariable Long id) {
         studentService.deleteStudentById(id);
         return "redirect:/students";
